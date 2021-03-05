@@ -108,7 +108,9 @@ class SolverProblemsException extends \RuntimeException
     {
         foreach ($reasonSets as $reasonSet) {
             foreach ($reasonSet as $rule) {
-                if (0 === strpos($rule->getRequiredPackage(), 'ext-')) {
+                $requiredPackage = $rule->getRequiredPackage();
+                
+                if ($requiredPackage && 0 === strpos($requiredPackage, 'ext-')) {
                     return true;
                 }
             }
